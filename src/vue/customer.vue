@@ -50,7 +50,7 @@
 		</div>
 		<div class="content" v-loading="tablelogin"  element-loading-text="拼命加载中">
 			<my-table-one :tabledataurl="tabledataurl" :tablecolumn="tablecolumn" :selectdata="selectdata"
-				:othercolumn="true" @selected="selected" @add="add" @edit="edit" @remove="remove">
+				:editbut="{'edit':false,'remove':true}" :othercolumn="true" @selected="selected" @add="add" @edit="edit" @remove="remove">
 				<el-table-column
 			      label="联系人"
 			      width="100">
@@ -67,18 +67,6 @@
 			    <el-table-column 
 			    	property="credentials"
       				label="有效证书">
-			    </el-table-column>
-			    
-				<el-table-column label="其他">
-			    	<template scope="scope">
-				      	<el-button
-				      		type="text"
-				      		@click.native.prevent="seleteother(scope.row)"
-				      	    size="small">
-				      	 	 查看
-				      	</el-button>
-				      	
-				    </template>
 			    </el-table-column>
 			</my-table-one>
 		</div>

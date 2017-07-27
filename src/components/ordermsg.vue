@@ -53,7 +53,7 @@
 	</el-dialog>
 		<div class="ordermsg-content" v-loading="tablelogin" element-loading-text="拼命加载中" >
 			<my-table-one :tabledataurl="tabledataurl" :tablecolumn="tablecolumn" :selectdata="selectdata"
-				:othercolumn="true" @selected="selected" @add="add" @edit="edit" @remove="remove">
+				:editbut="{'edit':false,'remove':true}" :othercolumn="true" @selected="selected" @add="add" @edit="edit" @remove="remove">
 				<el-table-column
 			      label="产品数量"
 			      width="100">
