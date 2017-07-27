@@ -80,7 +80,7 @@
 			}
 		},
 		methods:{
-			filterTag(value, row) {
+			filterTag:function(value, row) {
 		        return row.tag === value;
 		    },
 		    selected:function(val){

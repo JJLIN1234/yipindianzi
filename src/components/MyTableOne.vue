@@ -109,7 +109,7 @@
 				}
 		    	var reg = eval(new RegExp(pattern));//字符串转正则表达式
 		    	var tableall = [];//存放筛选后的临时数据
-		    	for(let i=0;i<this.searchtableall.length;i++){
+		    	for(var i=0;i<this.searchtableall.length;i++){
 		    		var lstablecolumn = this.searchtableall[i];
 		    		var result = reg.exec(lstablecolumn[this.select]);
 		    		if(result != null){

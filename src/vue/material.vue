@@ -106,7 +106,6 @@
             		"unit":"",
             		"remark":"",
             		"type":"1"
-            		
             	},
             	tablelogin:false,
             	tablethis:"",    /*Table组件this*/

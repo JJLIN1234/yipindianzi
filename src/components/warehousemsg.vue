@@ -225,7 +225,7 @@
 		        	function (response){  
 		        		
 		        		_this.select = [];
-		        		for (let i=0;i<response.body.length;i++) {
+		        		for (var i=0;i<response.body.length;i++) {
 	        				var linshi = {};
 		        			linshi.value = response.body[i].mid;
 		        			linshi.label = response.body[i].mName;
@@ -248,7 +248,7 @@
 		        	function (response){  
 		        		console.log(response)
 		        		_this.please = [];
-		        		for (let i=0;i<response.body.length;i++) {
+		        		for (var i=0;i<response.body.length;i++) {
 	        				var linshi = {};
 		        			linshi.value = response.body[i].oid;
 		        			linshi.label = response.body[i].ownNub;

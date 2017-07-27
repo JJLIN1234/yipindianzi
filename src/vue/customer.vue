@@ -2,11 +2,10 @@
 <template>
 	<div class="customer">
 		<el-dialog title="客户信息" :visible.sync="dialogFormVisible">
-			
-		    <el-form ref="form" :model="form" label-width="80px">
-		    <el-form-item label="客户编号">
-			  <el-input v-model="form.cNub"></el-input>
-			</el-form-item>
+		    <el-form ref="form" :model="form" :rules="rules" label-width="80px">
+			    <el-form-item label="客户编号"  prop="cNub">
+				  <el-input v-model="form.cNub"></el-input>
+				</el-form-item>
 			  <el-form-item label="客户名称">
 			    <el-input v-model="form.cName"></el-input>
 			  </el-form-item>
@@ -22,11 +21,9 @@
 			  <el-form-item label="传真">
 			    <el-input v-model="form.fax"></el-input>
 			  </el-form-item>
-			  
 			  <el-form-item label="发货地址">
 			    <el-input v-model="form.ship_addr"></el-input>
 			  </el-form-item>
-			  
 			  <el-form-item label="证书上传">
 			  <el-upload
 			  class="upload-demo"
@@ -41,7 +38,7 @@
 			
 		  <div slot="footer" class="dialog-footer">
 		    <el-button @click="clearl">取 消</el-button>
-		    <el-button type="primary" @click="addcustomer">确 定</el-button>
+		    <el-button type="primary" @click="addcustomer('form')">确 定</el-button>
 		  </div>
 		</el-dialog>
 		
@@ -127,6 +124,12 @@
             		"credentials":"",
             		
             		
+            	},
+            	rules:{
+            		cNub:[
+            			{ required: true, message: '请输入活动名称', trigger: 'blur' },
+            			{ min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+            		]
             	},
             	fileList: [],
             	tablelogin:false,
@@ -215,7 +218,19 @@
 			        }
 		        });
 		    },
-		    addcustomer:function(){
+		    addcustomer:function(formName){
+		    	var formv = true;
+		    	this.$refs[formName].validate(function(valid) {
+		          if (valid) {
+		          	formv = true;
+		          } else {
+		            formv = false;
+		            return false;
+		          }
+		        });
+		        if(!formv){
+		        	return;
+		        }
 		    	var _this = this;
 	      		this.$http.post(myurl.customercreate,this.form,{emulateJSON: true})
 		        .then(
